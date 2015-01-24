@@ -10,9 +10,11 @@
   $jsonArray = json_decode($json, true);
 
   foreach($jsonArray as $jsonItem) {
+    $unixtime = strtotime($jsonItem['date']);
+    $date = date("Y-m-d", $unixtime);
     $battles->insertBattle(
-      $jsonItem['name'], 
-      $jsonItem['date'],
+      $jsonItem['name'],
+      $date,
       $jsonItem['location'],
       $jsonItem['lat'],
       $jsonItem['lng'],
