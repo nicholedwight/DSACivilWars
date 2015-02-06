@@ -9,12 +9,13 @@
   "author": "Zia Grosvenor",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^0.18.0",
-    "request": "^2.49.0",
     "browser-sync": "^1.8.0",
+    "cheerio": "^0.18.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.0.0",
     "gulp-ruby-sass": "^0.7.1",
-    "gulp-watch": "^3.0.0"
+    "gulp-watch": "^3.0.0",
+    "request": "^2.49.0",
+    "underscore": "^1.7.0"
   }
 }
