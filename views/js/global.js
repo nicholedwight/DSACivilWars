@@ -4,8 +4,8 @@
 // -- Underscore JS
 $(document).ready(function(){
   // Location of battles data as a JSON resource.
-  // Used in AJAX call bellow. 
-  var battlesjson = "http://localhost:9000/dsa-civilwar/?json=battles";
+  // Used in AJAX call bellow.
+  var battlesjson = "http://civilwar.dev:8888/?json=battles";
 
   // Variable type Object.
   // used to expose JSON data from closure of AJAX request.
