@@ -12,8 +12,9 @@
   foreach($jsonArray as $jsonItem) {
     $unixtime = strtotime($jsonItem['date']);
     $date = date("Y-m-d", $unixtime);
+
     $battles->insertBattle(
-      $jsonItem['name'],
+      $jsonItem['name'], 
       $date,
       $jsonItem['location'],
       $jsonItem['lat'],

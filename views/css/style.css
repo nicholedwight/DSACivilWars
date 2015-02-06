@@ -1,0 +1,38 @@
+* {
+  font-family: Arial;
+  box-sizing: border-box; }
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  height: 100%; 
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0.5rem 0; }
+
+h1 {
+  margin-bottom: 2rem; }
+
+h2 {
+  color: #333; }
+
+#map-canvas {
+  margin: 5px auto;
+  width: 100%;
+  height: 400px; 
+}
+
+#battle-info {
+  background-color: white;
+  z-index: 9999;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
