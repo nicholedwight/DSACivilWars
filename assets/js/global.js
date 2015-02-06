@@ -4,8 +4,8 @@
 // -- Underscore JS
 $(document).ready(function(){
   // Location of battles data as a JSON resource.
-  // Used in AJAX call bellow.
-  var battlesjson = "http://civilwar.dev:8888/?json=battles";
+  // Used in AJAX call bellow. 
+  var battlesjson = "http://localhost:9000/dsa-civilwar/?json=battles";
 
   // Variable type Object.
   // used to expose JSON data from closure of AJAX request.
@@ -110,7 +110,7 @@ $(document).ready(function(){
         map: map,
         position: battleLocation,
         animation: google.maps.Animation.DROP,
-        icon: './views/img/cannon.png'
+        icon: './assets/img/cannon.png'
       });
 
       marker.setTitle((i + 1).toString());

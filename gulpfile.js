@@ -13,7 +13,8 @@ gulp.task('server', function () {
 		// watch the following files; changes will be injected (css & images) or cause browser to refresh
     files: [
     	'controllers/*.php', 
-    	'views/**/*', 
+    	'views/**/*',
+      'assets/**/*', 
     	'models/*.php',
     	'index.php'
     ],
@@ -38,13 +39,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('prefix', ['sass'], function () {
-	return gulp.src('src/css/*.css')
+	return gulp.src('./assets/css/*.css')
 		.pipe(autoprefix({
 			browsers: ['last 2 versions'],
 			cascade: true,
 			remove: false
 		}))
-		.pipe(gulp.dest('dist/css'));
+		.pipe(gulp.dest('./assets/css/'));
 });
 
 // starts the watch task
