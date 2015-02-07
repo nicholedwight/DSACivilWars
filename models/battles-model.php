@@ -5,7 +5,7 @@ class Battles
   // Battle properties
   public $db;
   public $battles;
-  
+
   // Assign parameter to argument to $db property
   public function __construct($db)
   {
@@ -33,20 +33,20 @@ class Battles
       // data from battles is added to the array
       $battles[] = $row;
 
-    } 
+    }
     // Return Array of rows
     return $battles;
   }
 
   // Insert Battle
   public function insertBattle($name, $date, $location, $lat, $lng, $outcome)
-  { 
-    // Query 
-    $stmt = $this->db->query("INSERT INTO battles VALUES ( DEFAULT, :name, :date, :location, :latitude, :longitude, :outcome)");
+  {
+    // Query
+    $stmt = $this->db->query("INSERT INTO Battles VALUES ( DEFAULT, :name, :date, :location, :latitude, :longitude, :outcome)");
 
     // Execute query
     $stmt->execute(array(
-      ':name'=>$name, 
+      ':name'=>$name,
       ':date'=>$date,
       ':location'=>$location,
       ':latitude'=>$lat,

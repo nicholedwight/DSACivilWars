@@ -9,6 +9,7 @@
   "author": "Zia Grosvenor",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.2",
     "browser-sync": "^1.8.0",
     "cheerio": "^0.18.0",
     "gulp": "^3.8.10",

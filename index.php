@@ -9,8 +9,10 @@ $Db = Database::getInstance();
 $battles = new Battles($Db);
 
 require './controllers/MapController.php';
+require './controllers/BattlesController.php';
 
 $mapController = new Controller\Map($battles);
+$battlesController = new Controller\Battles($battles);
 
 if(isset($_GET['page'])) {
   $page = $_GET['page'];
@@ -26,7 +28,7 @@ if(isset($_GET['json'])) {
 
   switch($resource) {
     case 'battles':
-      $mapController->battlesDataAsJSON();
+      $battlesController->battlesDataAsJSON();
     break;
   }
 }

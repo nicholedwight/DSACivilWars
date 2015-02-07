@@ -36,3 +36,7 @@ h2 {
   width: 80%;
   margin: 0 auto;
 }
+
+.modal-inner-wrap {
+  padding: 2rem;
+}

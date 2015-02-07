@@ -4,8 +4,8 @@
 // -- Underscore JS
 $(document).ready(function(){
   // Location of battles data as a JSON resource.
-  // Used in AJAX call bellow. 
-  var battlesjson = "http://localhost:9000/dsa-civilwar/?json=battles";
+  // Used in AJAX call bellow.
+  var battlesjson = "http://civilwar.dev:8888/?json=battles";
 
   // Variable type Object.
   // used to expose JSON data from closure of AJAX request.
@@ -65,21 +65,38 @@ $(document).ready(function(){
     var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     // Appends a container div to the map in which to display battle information using jQuery.
-    var battleInfoContainer = '<div id="battle-info"></div>';
-    $('#map-canvas').append(battleInfoContainer);
+    // var battleInfoContainer = '<div id="battle-info"></div>';
+    // $('#map-canvas').append(battleInfoContainer);
 
-    // Function used to add an event listener to each marker.
+    // Function used to add an event listeners to each marker.
     // Uses closure to protect values during iterations over battle data.
     // Markers will be made by iterating over the dataset. Making a marker for each iteration.
-    // On click the markers battle information will be displayed in the battle-info container.
-    function addInfoWindow (num, battle, marker) {
+    function addInfoWindow (num, battle, marker, map) {
       var battleName = battle.name;
       var battleDate = battle.date;
+      var battleOutcome = battle.outcome;
       var battleContent = "<h2>" + battleName + "</h2>";
       battleContent += '<p>' + battleDate + '<p>';
 
+      var infoWindow = new google.maps.InfoWindow({
+        content: battleContent
+      });
+
+      google.maps.event.addListener(marker, 'mouseover', function() {
+        infoWindow.open(map, marker);
+      });
+
+      google.maps.event.addListener(marker, 'mouseout', function() {
+        infoWindow.close();
+      });
+
       google.maps.event.addListener(marker, 'click', function() {
-        $('#battle-info').html(battleContent);
+        infoWindow.close();
+        toggleBounce(marker);
+        $('.modal-title').html(battleName);
+        $('.battle-date').html(battleDate);
+        $('.battle-outcome').html(battleOutcome);
+        $('#battle-modal').modal('toggle');
       });
     };
 
@@ -115,10 +132,7 @@ $(document).ready(function(){
 
       marker.setTitle((i + 1).toString());
 
-      addInfoWindow(i, battle, marker);
-      google.maps.event.addListener(marker, 'click', function (){
-        toggleBounce(marker);
-      });
+      addInfoWindow(i, battle, marker, map);
     });
   }
 });

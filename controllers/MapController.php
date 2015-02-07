@@ -3,7 +3,7 @@
 namespace Controller;
 
 //BlogController requires BaseController to render views
-require 'BaseController.php';
+require_once 'BaseController.php';
 
 class Map extends Base
 {
@@ -28,22 +28,7 @@ class Map extends Base
     $battles = $this->battles->getBattles();
     $this->renderHeader();
     include 'views/templates/map.php';
+    include 'views/templates/modal.php';
     $this->renderFooter();
-  }
-
-  public function battlesDataAsJSON()
-  {
-    $battles = $this->battles->getBattles();
-    echo(json_encode($battles));
-  }
-
-  /**
-   * Controller for 404 view
-   * This view show when no page/view can be found
-  */
-  public function pageNotFound()
-  {
-    $this->renderHeader();
-    include 'views/templates/404.php';
   }
 }

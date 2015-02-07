@@ -18,4 +18,14 @@ class Base
   {
     include 'views/templates/footer.php';
   }
+
+  /**
+   * Controller for 404 view
+   * This view show when no page/view can be found
+  */
+  public function pageNotFound()
+  {
+    $this->renderHeader();
+    include 'views/templates/404.php';
+  }
 }
