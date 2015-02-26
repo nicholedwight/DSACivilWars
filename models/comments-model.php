@@ -16,25 +16,19 @@ class Comments {
    * @return [array]
    */
 
-  //   public function insertComment() {
-  //   $db = connectToDatabase();
-  //   $comment = $_POST['comment'];
-  //   $userid = $_SESSION['access_token']['user_id'];
-  //   $username = $_SESSION['access_token']['screen_name'];
-  //   $profile_image_url = $_SESSION['profile_image_url'];
-  //   $battle_id = $_POST['battle_id'];
-  //   $date = date('Y-m-d H:i:s', time());
-  //
-  //   $query = "INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)";
-  //   $result = mysqli_query($db, $query);
-  // }
-  //
-  //   public function registerNewUser($userid, $username, $profile_image_url) {
-  //   $db = connectToDatabase();
-  //   $query = "INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
-  //   $result = mysqli_query($db, $query);
-  // }
-  //
+    public function insertComment($comment, $userid, $username, $profile_image_url, $battle_id, $date) {
+  
+
+    $stmt = $this->db->query("INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)");
+    $stmt->execute();
+  }
+
+    public function registerNewUser($userid, $username, $profile_image_url) {
+    $db = connectToDatabase();
+    $query = "INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
+    $result = mysqli_query($db, $query);
+  }
+
   public function getUserInfoByID($userid) {
     $stmt = $this->db->query("SELECT * FROM users WHERE userid = $userid");
     $stmt->execute();
