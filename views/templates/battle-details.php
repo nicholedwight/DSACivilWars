@@ -1,3 +1,4 @@
+<a href="index.php">Back</a>
 <h1 class='page-header'><?php echo $battle['name']; ?></h1>
 <h3><?php echo $battle['location']; ?></h3>
 <p><?php echo $battle['outcome']; ?></p>
