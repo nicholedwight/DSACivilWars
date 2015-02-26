@@ -17,16 +17,15 @@ class Comments {
    */
 
     public function insertComment($comment, $userid, $username, $profile_image_url, $battle_id, $date) {
-  
+
 
     $stmt = $this->db->query("INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)");
     $stmt->execute();
   }
 
     public function registerNewUser($userid, $username, $profile_image_url) {
-    $db = connectToDatabase();
-    $query = "INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
-    $result = mysqli_query($db, $query);
+      $stmt = $this->db->query("INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')");
+      $stmt->execute();
   }
 
   public function getUserInfoByID($userid) {

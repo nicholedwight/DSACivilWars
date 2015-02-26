@@ -38,7 +38,7 @@ $Db = Database::getInstance();
 $comments = new Comments($Db);
 //Calling those functions to check the DB for user, if not then it registers them
 if (!$comments->getUserInfoByID($userid)) {
-  $comments->comments->registerNewUser($userid, $username, $profile_image_url);
+  $comments->registerNewUser($userid, $username, $profile_image_url);
 }
 
 if(!isset($_COOKIE['redirectURL'])) {

@@ -40,7 +40,6 @@ class Page extends Base
     // Gets battles from battles model and comments from comments model.
     $factions = $this->battles->getFactionsByBattleId($id);
     $battle = $this->battles->getBattleById($id);
-    $commentRows = $this->comments->getAllCommentsByBattleID($id);
     $this->renderHeader();
     include 'views/templates/battle-details.php';
     $this->renderFooter();
