@@ -19,6 +19,8 @@ if($_POST['comment']){
   $comments->insertComment($comment, $userid, $username, $profile_image_url, $battle_id, $date);
 }
 
+$commentRows = $comments->getAllCommentsByBattleID($id);
+
 if ($_SESSION) {
   ?><a href='http://civilwar.dev:8888/logout.php'>Logout</a><?php
 }

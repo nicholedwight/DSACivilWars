@@ -1,5 +1,4 @@
 <?php
-
 // https://twitteroauth.com/
 include('views/templates/head.php');
 require './database/Database.php';
