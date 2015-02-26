@@ -2,12 +2,16 @@
   font-family: Arial;
   box-sizing: border-box; }
 
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 html, body {
   overflow-x: hidden;
   height: 100%;
   margin: 0px;
   padding: 0px;
-  height: 100%; 
+  width: 100%;
 }
 
 h1, h2, h3, h4, h5 {
@@ -22,7 +26,7 @@ h2 {
 #map-canvas {
   margin: 5px auto;
   width: 100%;
-  height: 400px; 
+  height: 400px;
 }
 
 #battle-info {
@@ -43,4 +47,109 @@ h2 {
 
 #battle-link-wrapper {
   display: inline;
+}
+
+/* Comment Section Styles */
+.comment_section_wrapper {
+  width: 40%;
+  padding: 20px;
+  border: 2px solid black;
+}
+
+.comment_list {
+  margin: 0 auto;
+  padding: 0;
+}
+
+.comment_list li {
+  list-style-type: none;
+  margin: 15px 0;
+}
+
+.comment_count {
+  height: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment_avatar {
+  float: left;
+  width: 40px;
+}
+
+.comment_content_wrapper {
+  margin-left: 50px;
+}
+
+.comment_user_info p {
+  margin: 10px 0;
+}
+
+.comment_date {
+  color: #999;
+  font-size: 12px;
+}
+
+.form_wrapper {
+  text-align: center;
+  width: 94%;
+  padding-top: 15px;
+}
+
+.comment_field {
+  width: 100%;
+}
+
+.current_user_wrapper {
+  float: left;
+  margin-left: 10px;
+}
+
+.current_user_avatar {
+  vertical-align: middle;
+}
+
+.current_user_name {
+  margin: 0;
+}
+
+.submit {
+  float: right;
+  margin-right: 15px;
+}
+
+.btn {
+  border: none;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.4;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  -webkit-transition: border .25s linear, color .25s linear, background-color .25s linear;
+  transition: border .25s linear, color .25s linear, background-color .25s linear;
+  color: #ffffff;
+  background-color: #1abc9c;
+}
+
+.btn:hover, .btn:focus, .btn:active {
+  color: #ffffff;
+  background-color: #48c9b0;
+  border-color: #48c9b0;
+}
+
+.btn-embossed {
+  -webkit-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+}
+
+
+/*Clearfix */
+.cf:before,
+.cf:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.cf:after {
+  clear: both;
 }

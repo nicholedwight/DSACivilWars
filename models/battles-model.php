@@ -115,4 +115,38 @@ class Battles
       ':outcome'=>$outcome
     ));
   }
+
+  // public function registerNewUser($userid, $username, $profile_image_url) {
+  //   $stmt = $this->db->query("INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
+  //   $stmt->execute(array(
+  //
+  //   ));
+  // }
+
+// public function getUserInfoByID($userid) {
+//   $stmt = $this->db->query("SELECT * FROM users WHERE userid = $userid";
+//   if ($result = $stmt->fetch()) {
+//     $result;
+//   } else {
+//     return false;
+//   }
+// }
+
+
+  public function getAllCommentsByBattleID($battle_id) {
+    $stmt = $this->db->query("SELECT *
+              FROM comments
+              INNER JOIN users
+              ON comments.userid = users.userid
+              WHERE battle_id = $battle_id");
+
+    $stmt->bindParam(':id', $battle_id);
+    $stmt->execute();
+    $rows = array();
+      while($row = $stmt->fetch()) {
+        $rows[] = $row;
+      }
+      return $rows;
+
+  }
 }
