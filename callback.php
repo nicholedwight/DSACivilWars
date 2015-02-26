@@ -35,10 +35,10 @@ $profile_image_url = $_SESSION['profile_image_url'];
 
 //Instantiating the Comments Model in order to call the functions to check if a user is already registered in our DB or not
 $Db = Database::getInstance();
-$u = new Comments($Db);
+$comments = new Comments($Db);
 //Calling those functions to check the DB for user, if not then it registers them
 if (!$u->getUserInfoByID($userid)) {
-  $u->comments->registerNewUser($userid, $username, $profile_image_url);
+  $comments->comments->registerNewUser($userid, $username, $profile_image_url);
 }
 
 if(!isset($_COOKIE['redirectURL'])) {
