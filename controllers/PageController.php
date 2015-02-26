@@ -14,9 +14,10 @@ class Page extends Base
    * Controller takes battles model as object and assigns it to controller property battles
    * @param [object] $battles
   */
-  function __construct($battles)
+  function __construct($models)
   {
-    $this->battles = $battles;
+    $this->battles = $models['battles'];
+    $this->comments = $models['comments'];
   }
 
   /**
@@ -35,12 +36,12 @@ class Page extends Base
   /**
    * Controller method for map homepage, query $db, fetch array, create view.
   */
-  public function battlePage($id)
-  {
+  public function battlePage($id) {
     // Gets battles from battles model.
     $factions = $this->battles->getFactionsByBattleId($id);
     $battle = $this->battles->getBattleById($id);
-    $commentRows = $this->battles->getAllCommentsByBattleID($id);
+
+    $commentRows = $this->comments->getAllCommentsByBattleID($id);
     $this->renderHeader();
     include 'views/templates/battle-details.php';
     $this->renderFooter();

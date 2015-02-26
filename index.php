@@ -1,13 +1,21 @@
 <?php
+ini_set('display_errors',1);
+ini_set('display_startup_errors',1);
+error_reporting(-1);
+
+
 require './database/Database.php';
 require './models/battles-model.php';
+require './models/comments-model.php';
 require './controllers/PageController.php';
 require './controllers/ResourceController.php';
-
 $Db = Database::getInstance();
 $battles = new Battles($Db);
+$comments = new Comments($Db);
 
-$PageController = new Controller\Page($battles);
+$models = array('battles' => $battles, 'comments' => $comments);
+
+$PageController = new Controller\Page($models);
 $ResourceController = new Controller\Resource($battles);
 
 if(isset($_GET['page'])) {
