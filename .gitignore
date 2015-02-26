@@ -15,4 +15,4 @@ Temporary Items
 *.css.map
 
 ## Npm ##
-data/node_modules/*
+node_modules/*

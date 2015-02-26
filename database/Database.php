@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class Database
 {
@@ -27,7 +27,7 @@ class Database
   /**
    * Connect to DB when class is instantiated
    */
-  private function __construct() 
+  private function __construct()
   {
       $this->connect();
   }
@@ -36,16 +36,16 @@ class Database
    * Connects to the database
    */
   private function connect()
-  {   
+  {
       // Assign dsn string
       $dsn = 'mysql:host=' . $this->server . ';dbname=' . $this->database;
 
-      try { 
+      try {
           // Assign connection to $pdo
           $pdo = new PDO($dsn, $this->username, $this->password);
-      } catch (PDOException $e) { 
-          throw new pdoDbException($e); 
-      } 
+      } catch (PDOException $e) {
+          throw new pdoDbException($e);
+      }
 
       // $pdo inside the method is added to the classes parameter pdo
       $this->pdo = $pdo;
@@ -58,7 +58,7 @@ class Database
    * @return Sql Query $statement
    */
   public function query($sql)
-  {   
+  {
       // Prepare SQL query
       $statement = $this->pdo->prepare($sql);
 

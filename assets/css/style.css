@@ -40,3 +40,7 @@ h2 {
 .modal-inner-wrap {
   padding: 2rem;
 }
+
+#battle-link-wrapper {
+  display: inline;
+}

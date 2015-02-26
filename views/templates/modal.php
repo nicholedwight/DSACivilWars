@@ -13,6 +13,7 @@
          reiciendis quae placeat non doloremque illo?</p>
       </div>
       <div class="modal-footer">
+        <div id="battle-link-wrapper"></div>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div><!-- /.modal-footer -->
     </div><!-- /.modal-content -->

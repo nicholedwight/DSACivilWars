@@ -15,7 +15,7 @@ $(document).ready(function(){
   // JSON is then parsed to a JavaScript Object and stored in battles variable.
   // Once data is available the map is initialized.
   $.get(battlesjson, function(data) {
-    battles = JSON.parse(data);
+    battles = data;
     initializeMap();
   });
 
@@ -67,7 +67,7 @@ $(document).ready(function(){
     // Appends a container div to the map in which to display battle information using jQuery.
     // var battleInfoContainer = '<div id="battle-info"></div>';
     // $('#map-canvas').append(battleInfoContainer);
-
+    var i = 0;
     // Function used to add an event listeners to each marker.
     // Uses closure to protect values during iterations over battle data.
     // Markers will be made by iterating over the dataset. Making a marker for each iteration.
@@ -76,7 +76,14 @@ $(document).ready(function(){
       var battleDate = battle.date;
       var battleOutcome = battle.outcome;
       var battleContent = "<h2>" + battleName + "</h2>";
+      var linkToBattlePage = "<a href='/?page=battle&id=" + battle.id +"' alt='Link to battle page'>";
+      linkToBattlePage += "<button type='button' class='btn btn-success'>More info about the " + battle.name + "</button>";
+      linkToBattlePage += "</a>";
       battleContent += '<p>' + battleDate + '<p>';
+
+
+      marker.set('id', 'm' + i);
+      i++;
 
       var infoWindow = new google.maps.InfoWindow({
         content: battleContent
@@ -92,10 +99,12 @@ $(document).ready(function(){
 
       google.maps.event.addListener(marker, 'click', function() {
         infoWindow.close();
+        map.panTo(marker.getPosition());
         toggleBounce(marker);
         $('.modal-title').html(battleName);
         $('.battle-date').html(battleDate);
         $('.battle-outcome').html(battleOutcome);
+        $('#battle-link-wrapper').html(linkToBattlePage);
         $('#battle-modal').modal('toggle');
       });
     };
@@ -127,12 +136,16 @@ $(document).ready(function(){
         map: map,
         position: battleLocation,
         animation: google.maps.Animation.DROP,
-        icon: './assets/img/cannon.png'
+        icon: './assets/img/cannon.png' + '#' + i
       });
 
-      marker.setTitle((i + 1).toString());
+      marker.setTitle(battle.name);
 
       addInfoWindow(i, battle, marker, map);
     });
   }
+});
+
+$('.battleTest').click(function() {
+  $('#battle-modal').modal('toggle');
 });

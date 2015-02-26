@@ -8,4 +8,3 @@
   </head>
   <body>
   <div class='wrapper'>
-    <h1>DSA English Civil War Map</h1>

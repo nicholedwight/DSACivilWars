@@ -2,6 +2,7 @@
 
 var gulp = require ('gulp'),
 	watch = require ('gulp-watch'),
+  shell = require('gulp-shell'),
 	autoprefix = require ('gulp-autoprefixer'),
 	browserSync = require ('browser-sync'),
 	sass = require ('gulp-ruby-sass');
@@ -48,6 +49,6 @@ gulp.task('prefix', ['sass'], function () {
 		.pipe(gulp.dest('./assets/css/'));
 });
 
+gulp.task('test', shell.task('./node_modules/.bin/pioneer'));
 // starts the watch task
-
 gulp.task('default', ['server', 'prefix']);
