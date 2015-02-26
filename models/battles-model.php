@@ -131,22 +131,4 @@ class Battles
 //     return false;
 //   }
 // }
-
-
-  public function getAllCommentsByBattleID($battle_id) {
-    $stmt = $this->db->query("SELECT *
-              FROM comments
-              INNER JOIN users
-              ON comments.userid = users.userid
-              WHERE battle_id = $battle_id");
-
-    $stmt->bindParam(':id', $battle_id);
-    $stmt->execute();
-    $rows = array();
-      while($row = $stmt->fetch()) {
-        $rows[] = $row;
-      }
-      return $rows;
-
-  }
 }
