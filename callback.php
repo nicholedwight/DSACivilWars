@@ -1,8 +1,8 @@
 <?php
 
 // https://twitteroauth.com/
-include('inc/header.php');
-include('models/comments-model.php');
+include('views/templates/head.php');
+include('lib.php');
 require "vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
