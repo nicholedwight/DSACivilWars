@@ -37,7 +37,7 @@ $profile_image_url = $_SESSION['profile_image_url'];
 $Db = Database::getInstance();
 $comments = new Comments($Db);
 //Calling those functions to check the DB for user, if not then it registers them
-if (!$u->getUserInfoByID($userid)) {
+if (!$comments->getUserInfoByID($userid)) {
   $comments->comments->registerNewUser($userid, $username, $profile_image_url);
 }
 
