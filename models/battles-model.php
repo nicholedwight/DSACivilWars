@@ -116,19 +116,5 @@ class Battles
     ));
   }
 
-  // public function registerNewUser($userid, $username, $profile_image_url) {
-  //   $stmt = $this->db->query("INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
-  //   $stmt->execute(array(
-  //
-  //   ));
-  // }
 
-// public function getUserInfoByID($userid) {
-//   $stmt = $this->db->query("SELECT * FROM users WHERE userid = $userid";
-//   if ($result = $stmt->fetch()) {
-//     $result;
-//   } else {
-//     return false;
-//   }
-// }
 }
