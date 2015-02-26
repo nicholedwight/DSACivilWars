@@ -35,15 +35,15 @@ class Comments {
   //   $result = mysqli_query($db, $query);
   // }
   //
-  // public function getUserInfoByID($userid) {
-  //   $db = connectToDatabase();
-  //   $query = "SELECT * FROM users WHERE userid = $userid";
-  //   if ($result = mysqli_query($db, $query)) {
-  //     return mysqli_fetch_row($result);
-  //   } else {
-  //     return false;
-  //   }
-  // }
+  public function getUserInfoByID($userid) {
+    $stmt = $this->db->query("SELECT * FROM users WHERE userid = $userid");
+    $stmt->execute();
+    if ($row = $stmt->fetch()) {
+      return $row;
+    } else {
+      return false;
+    }
+  }
 
   public function getAllCommentsByBattleID($battle_id) {
     $stmt = $this->db->query("SELECT *

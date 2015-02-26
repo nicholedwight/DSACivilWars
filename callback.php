@@ -2,7 +2,8 @@
 
 // https://twitteroauth.com/
 include('views/templates/head.php');
-include('lib.php');
+require './database/Database.php';
+require './models/comments-model.php';
 require "vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
 
@@ -32,8 +33,12 @@ $userid = $_SESSION['access_token']['user_id'];
 $username = $_SESSION['access_token']['screen_name'];
 $profile_image_url = $_SESSION['profile_image_url'];
 
-if (!getUserInfoByID($userid)) {
-  registerNewUser($userid, $username, $profile_image_url);
+//Instantiating the Comments Model in order to call the functions to check if a user is already registered in our DB or not
+$Db = Database::getInstance();
+$u = new Comments($Db);
+//Calling those functions to check the DB for user, if not then it registers them
+if (!$u->getUserInfoByID($userid)) {
+  $u->comments->registerNewUser($userid, $username, $profile_image_url);
 }
 
 if(!isset($_COOKIE['redirectURL'])) {
