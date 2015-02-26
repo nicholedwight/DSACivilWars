@@ -13,8 +13,14 @@
   setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 days
 
 //Submitting the comment to the db
-if($_SERVER['REQUEST_METHOD']=="POST"){
-  insertComment();
+if($_POST['comment']){
+  $comment = $_POST['comment'];
+  $userid = $_SESSION['access_token']['user_id'];
+  $username = $_SESSION['access_token']['screen_name'];
+  $profile_image_url = $_SESSION['profile_image_url'];
+  $battle_id = $_POST['battle_id'];
+  $date = date('Y-m-d H:i:s', time());
+  $comments->insertComment($comment, $userid, $username, $profile_image_url, $battle_id, $date);
 }
 
 if ($_SESSION) {
