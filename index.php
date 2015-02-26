@@ -34,7 +34,7 @@ else {
 if(isset($_GET['json'])) {
   $resource = $_GET['json'];
 
-  header_remove(); 
+  header_remove();
   header("Content-Type:application/json");
 
   switch($resource) {
@@ -47,7 +47,7 @@ if(isset($_GET['json'])) {
 // If RSS is requested send data as XML.
 if(isset($_GET['rss'])) {
   if(isset($battleId)) {
-    header_remove(); 
+    header_remove();
     header("Content-Type:text/xml");
     $ResourceController->renderRSSByBattleId($battleId);
   }
@@ -61,7 +61,7 @@ if(isset($_GET['rss'])) {
 // serve HTML for application pages or 404 page.
 if(empty($_GET['json']) && empty($_GET['rss'])) {
 
-  header_remove(); 
+  header_remove();
   header("Content-Type:text/html");
 
   switch($page) {
