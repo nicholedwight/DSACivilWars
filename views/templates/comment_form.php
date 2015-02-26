@@ -10,7 +10,6 @@
   } else {
     $cookie_value = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
   }
-  var_dump($_COOKIE['redirectURL']);
   setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 days
 
 //Submitting the comment to the db
@@ -19,7 +18,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 }
 
 if ($_SESSION) {
-  ?><a href='civilwar.dev:8888/logout.php'>Logout</a><?php
+  ?><a href='http://civilwar.dev:8888/logout.php'>Logout</a><?php
 }
 ?>
 <section class="comment_section_wrapper cf">
