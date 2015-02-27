@@ -1,5 +1,5 @@
 <?php
-// Followed tutorial on https://twitteroauth.com/ to set up Twitter authentication
+// Based on https://twitteroauth.com/ to set up Twitter authentication
 include('views/templates/head.php');
 require "vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;
@@ -15,6 +15,7 @@ $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
 
 $url = $connection->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
 
+//Automatically redirects the user to the twitter authorsation page
 header("Location: " . $url);
 
 ?>

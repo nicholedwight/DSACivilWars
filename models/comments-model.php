@@ -56,15 +56,14 @@ class Comments {
   }
 
   public function setRedirectCookie() {
-    //set a cookie to the value of current URL
       $cookie_name = "redirectURL";
-
+      //sets a cookie to the value of current URL
       if ($_SERVER["SERVER_PORT"] != "80") {
-        $cookie_value =
-        $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+        $cookie_value = $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
       } else {
         $cookie_value = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
       }
+
       setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 days
   }
 }

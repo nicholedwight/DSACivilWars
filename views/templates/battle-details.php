@@ -11,7 +11,9 @@
     <h3><?php echo $faction['notablePersonTwo'];?></h3>
   <?php endif; ?>
 <?php endforeach; ?>
+
 <section class="twitter-wrapper">
+  <!--Nichole's individual part, including the two files containing twitter sections-->
   <?php include('./views/inc/comment_form.php'); ?>
   <?php include('./views/inc/twitter-war.php'); ?>
 </section>

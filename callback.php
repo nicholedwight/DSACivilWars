@@ -40,6 +40,8 @@ if (!$comments->getUserInfoByID($userid)) {
   $comments->registerNewUser($userid, $username, $profile_image_url);
 }
 
+
+//Checking for a redirectURL to take the user back to the battle info page they were previously on (cookie should have been set there)
 if(!isset($_COOKIE['redirectURL'])) {
   // No cookies are set
 } else {
@@ -47,5 +49,6 @@ if(!isset($_COOKIE['redirectURL'])) {
   $redirect = "http://" . $_COOKIE['redirectURL'];
 }
 
+//Redirects the user back to previous battle info page
 header("Location: " . $redirect);
 ?>
