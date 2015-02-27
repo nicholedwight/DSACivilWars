@@ -12,6 +12,6 @@
   <?php endif; ?>
 <?php endforeach; ?>
 <section class="twitter-wrapper">
-  <?php include('comment_form.php'); ?>
-  <?php include('twitter-war.php'); ?>
+  <?php include('./views/inc/comment_form.php'); ?>
+  <?php include('./views/inc/twitter-war.php'); ?>
 </section>
