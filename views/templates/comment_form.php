@@ -1,7 +1,4 @@
-<pre><?php
-var_dump($_POST); ?>
-</pre><?
-
+<?php
 //Instantiating the Comments Model in order to call the insertComment function
 $Db = Database::getInstance();
 $comments = new Comments($Db);
@@ -9,7 +6,7 @@ $comments = new Comments($Db);
 $comments->setRedirectCookie();
 
 //Submitting the comment to the db
-if($_POST['comment']){
+if(isset($_POST['comment'])){
   $comment = $_POST['comment'];
   $userid = $_SESSION['access_token']['user_id'];
   $username = $_SESSION['access_token']['screen_name'];
