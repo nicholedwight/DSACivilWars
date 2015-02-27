@@ -144,8 +144,5 @@ $(document).ready(function(){
       addInfoWindow(i, battle, marker, map);
     });
   }
-});
 
-$('.battleTest').click(function() {
-  $('#battle-modal').modal('toggle');
 });
