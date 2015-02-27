@@ -22,7 +22,7 @@ if ($_SESSION) {
   ?><a href='http://civilwar.dev:8888/logout.php'>Logout</a><?php
 }
 ?>
-<section class="comment_section_wrapper cf">
+<div class="comment_section_wrapper cf">
   <ul class="comment_list">
 
   <div class="comment_count">
@@ -85,4 +85,4 @@ if ($_SESSION) {
     }
     ?>
   </div>
-</section>
+</div>

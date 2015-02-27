@@ -2,10 +2,6 @@
 //Based on code by James Mallison, see https://github.com/J7mbo/twitter-api-php
 ini_set('display_errors', 1);
 require_once('./vendor/TwitterAPIExchange.php');
-// $badwords = array();
-// include('banbuilder-library/lang/en-us.wordlist-regex.php');
-// include('banbuilder-library/lang/en-uk.wordlist-regex.php');
-// include('banbuilder-library/censor.function.php');
 
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
@@ -16,22 +12,19 @@ $settings = array(
 );
 
 /** Perform a GET request and echo the response **/
-/** Note: Set the GET field BEFORE calling buildOauth(); **/
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = '?q=%23englishcivilwar&result_type=recent';
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data=$twitter->setGetfield($getfield)
-           ->buildOauth($url, $requestMethod)
-           ->performRequest();
+             ->buildOauth($url, $requestMethod)
+             ->performRequest();
 
-//Use this to look at the raw JSON
-// echo($data);
-
-// Read the JSON into a PHP object
+// Read the $data JSON into a PHP object
 $phpdata = json_decode($data, true);
 
-?> <section class="comment_section_wrapper cf"> <?php
+//Set some HTML for presentation of tweets
+?> <div class="hashtag_section_wrapper cf"> <?php
 
 //Loop through the status updates and print out the text of each
 foreach ($phpdata["statuses"] as $status){
@@ -40,7 +33,6 @@ foreach ($phpdata["statuses"] as $status){
   $tweet = $status["text"];
   $time = date("H:i", strtotime($status["created_at"]));
   $profileimage = $status["user"]["profile_image_url"];
-
   ?>
     <div class="tweet_box">
     <div class="inner">
@@ -55,4 +47,4 @@ foreach ($phpdata["statuses"] as $status){
     </div>
     </div>
 <?php } ?>
-</section>
+</div>
