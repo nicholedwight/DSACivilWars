@@ -4,8 +4,10 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
 
+//Starting session for Twitter Comments
 session_start();
 
+//Constructing a TwitterOAuth instance and defining the callback URL for returning from Twitter authorisation
 define('CONSUMER_KEY', 'YQaiUzS8v8HNvIJOg6KSRjMvW');
 define('CONSUMER_SECRET', 'i9IFDhJitWKMnqapppJsDGFVCDjT1Zo6B9UpYlPsPFP1XHt629');
 define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
