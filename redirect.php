@@ -1,4 +1,5 @@
 <?php
+//This page is used when user clicks login with twitter to comment. They are then redirected to the Twitter Authorisation URL
 // Based on https://twitteroauth.com/ to set up Twitter authentication
 include('views/templates/head.php');
 require "vendor/autoload.php";

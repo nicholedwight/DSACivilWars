@@ -1,4 +1,5 @@
 <?php
+//This page is used when returning from the Twitter Authorisation URL
 include('views/templates/head.php');
 require './database/Database.php';
 require './models/comments-model.php';
