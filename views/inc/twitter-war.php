@@ -26,7 +26,8 @@ $getfield = "?q=#".
             // $notablePersonOne .
             // "+OR+" .
             // $notablePersonTwo .
-            "+OR+'English Civil War'" .
+            "+OR+The+AND+Dress";
+            // "+OR+English+AND+Civil+AND+War" .
             // "+OR+#englishcivilwar" .
             "&result_type=recent";
 $requestMethod = 'GET';
