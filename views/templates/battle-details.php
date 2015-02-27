@@ -1,4 +1,4 @@
-<a href="?page=map"><button class='btn btn-primary'>< Back To Homepage</button></a>
+<a href="./map"><button class='btn btn-primary'>< Back To Homepage</button></a>
 <h1 class='page-header'><?php echo $battle['name']; ?></h1>
 <h3><?php echo $battle['location']; ?></h3>
 <p><?php echo $battle['outcome']; ?></p>

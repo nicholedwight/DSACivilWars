@@ -32,13 +32,22 @@ define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
             </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a <?php echo 'href="?page=battle&id=' . $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
+                <a <?php echo 'href="battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
                   <?php echo $battle['name']; ?> webpage
                 </a>
               </li>
               <li>
-                <a <?php echo 'href="?rss=battle&id=' . $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
+                <a <?php echo 'href="./rss/battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
                   <?php echo $battle['name']; ?> RSS feed
+                </a>
+              </li><li>
+                <a <?php echo 'href="./'. str_replace(' ', '_', $battle['name']) . '" alt="' . $battle['name'] . '"';?>>
+                  Battle data as JSON REST Service
+                </a>
+              </li>
+              <li>
+                <a <?php echo 'href="./battle'. $battle['id'] . '/people" alt="' . $battle['name'] . '"';?>>
+                  Factions and People data as JSON REST Service
                 </a>
               </li>
             </ul>

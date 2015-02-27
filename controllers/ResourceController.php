@@ -25,10 +25,16 @@ class Resource extends Base
     echo(json_encode($battles));
   }
 
-  public function getBattleByNameAsJSON($name)
+  public function sendBattleByNameAsJSON($name)
   {
     $battle = $this->battles->getBattleByName($name);
     echo(json_encode($battle));
+  }
+
+  public function sendFactionsByBattleIdAsJSON($id)
+  {
+    $factions = $this->battles->getFactionsByBattleId($id);
+    echo(json_encode($factions));
   }
 
 

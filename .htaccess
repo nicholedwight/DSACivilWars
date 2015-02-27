@@ -5,5 +5,7 @@ RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
 RewriteRule ^map?$ index.php?page=$1 [L]
-RewriteRule ^(battle)([1-9])?$ index.php?page=$1&id=$2 [L]
-RewriteRule ^([\w]+)\/([\w]+)?$ index.php?json=battle_by_name&name=$1&data_type=$2 [L]
+RewriteRule ^(battle)([0-9]+)\/?$ index.php?page=$1&id=$2 [L]
+RewriteRule ^(rss)\/(battle)([0-9]+)\/?$ index.php?rss=battle&id=$3 [L]
+RewriteRule ^([\w]+)\/?$ index.php?json=battle_by_name&name=$1 [L]
+RewriteRule ^(battle)([0-9]+)\/(people)?$ index.php?json=people_by_battle_id&id=$2&people=true [L] index.php?json=battle_by_name&name=$1&data_type=$2 [L]

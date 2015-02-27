@@ -30,26 +30,30 @@ else {
   $page = 'map';
 }
 
+if(isset($_GET['name'])) {
+  $battleName = str_replace('_', ' ', $_GET['name']);
+}
+else {
+  $battleName = 'Battle of Adwalton Moor';
+}
+
 // If JSON is requested send data as JSON.
 // The route is used in global.js file to supply data as JSON for the map.
 if(isset($_GET['json'])) {
   $resource = $_GET['json'];
 
+
   header_remove();
   header("Content-Type:application/json");
-
   switch($resource) {
     case 'battles':
       $ResourceController->battlesDataAsJSON();
     break;
     case 'battle_by_name':
-      if(isset($_GET['name'])) {
-        $battleName = str_replace('_', ' ', $_GET['name']);
-      }
-      else {
-        $battleName = 'Battle of Adwalton Moor';
-      }
-      $ResourceController->getBattleByNameAsJSON($battleName);
+      $ResourceController->sendBattleByNameAsJSON($battleName);
+    break;
+    case 'people_by_battle_id':
+      $ResourceController->sendFactionsByBattleIdAsJSON($battleId);
     break;
   }
 }
