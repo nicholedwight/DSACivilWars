@@ -24,8 +24,8 @@ $getfield = "?q=#".
             $battleName .
             "+OR+#" .
             $notablePersonOne .
-            "+OR+English%20Civil%20War";
-            "+OR+#englishcivilwar" .
+            "+OR+English%20Civil%20War" .
+            "+OR+#englishcivilwar";
 
 if (isset($faction['notablePersonTwo'])) {
   $getfield .= "+OR+" . $notablePersonTwo;
