@@ -12,3 +12,4 @@
   <?php endif; ?>
 <?php endforeach; ?>
 <?php include('comment_form.php'); ?>
+<?php include('twitter-war.php'); ?>
