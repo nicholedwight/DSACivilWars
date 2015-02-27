@@ -44,7 +44,7 @@ class Database
           // Assign connection to $pdo
           $pdo = new PDO($dsn, $this->username, $this->password);
       } catch (PDOException $e) {
-          throw new pdoDbException($e);
+          throw new PDOException( $Exception->getMessage( ) , $Exception->getCode( ) );
       }
 
       // $pdo inside the method is added to the classes parameter pdo

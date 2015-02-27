@@ -2,12 +2,12 @@
 
 namespace Controller;
 
-class Base 
+class Base
 {
   /**
    * Render header method
    */
-  public function renderHeader()
+  public function renderHeader($battles)
   {
     include 'views/templates/head.php';
   }
