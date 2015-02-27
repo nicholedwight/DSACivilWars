@@ -22,14 +22,16 @@ if(isset($faction['notablePersonTwo'])) {
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $getfield = "?q=#".
             $battleName .
-            // "+OR+#" .
-            // $notablePersonOne .
-            // "+OR+" .
-            // $notablePersonTwo .
-            "+OR+The+AND+Dress";
-            // "+OR+English+AND+Civil+AND+War" .
-            // "+OR+#englishcivilwar" .
-            "&result_type=recent";
+            "+OR+#" .
+            $notablePersonOne .
+            "+OR+English%20Civil%20War";
+            "+OR+#englishcivilwar" .
+
+if (isset($faction['notablePersonTwo'])) {
+  $getfield .= "+OR+" . $notablePersonTwo;
+}
+$getfield .= "&result_type=recent";
+
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data=$twitter->setGetfield($getfield)
