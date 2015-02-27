@@ -10,10 +10,24 @@ $settings = array(
   'consumer_key' => "cUoJtlCdfGW4rMDpnORVz6Mfu",
   'consumer_secret' => "RbNDMvbH16pRRyL2a1Q1kia5ZqegwajY3p0fsbGUYH4CoVzZnu"
 );
-
+;
 /** Perform a GET request and echo the response **/
+//Setting variables for the getfield
+$battleName =  str_replace(' ', '', $battle['name']);//Removing whitespace from battle name for the getfield
+$notablePersonOne = str_replace(' ', '', $faction['notablePerson']);
+if(isset($faction['notablePersonTwo'])) {
+  $notablePersonTwo = str_replace(' ', '', $faction['notablePersonTwo']);
+}
+
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = '?q=%23englishcivilwar&result_type=recent';
+$getfield = "?q=#".
+            $battleName .
+            "+OR+#" .
+            $notablePersonOne .
+            // "+OR+" .
+            // $notablePersonTwo .
+            // "+OR+#englishcivilwar" .
+            "&result_type=recent";
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data=$twitter->setGetfield($getfield)
