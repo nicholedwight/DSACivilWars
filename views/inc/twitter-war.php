@@ -16,17 +16,13 @@ $settings = array(
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $battleName =  str_replace(' ', '', $battle['name']);//Removing whitespace from battle name for the getfield
 $getfield = "?q=#". $battleName;
+
 //Looping through factions array to display both factions and all potential notable people in the getfield
-foreach ($factions['factions'] as $faction) {
-    if ($faction['factionName']) {
-      $getfield .= "+OR+#" . $faction['factionName'];
-    }
-      $getfield .= "+OR+#" . str_replace(' ', '', $faction['notablePerson']) .
-                   "+OR+" . str_replace(' ', '%20', $faction['notablePerson']);
-    if ($faction['notablePersonTwo']) {
-     $getfield .= "+OR+#" . str_replace(' ', '', $faction['notablePersonTwo']) .
-      "+OR+" . str_replace(' ', '%20', $faction['notablePersonTwo']);
-    }
+foreach ($factions as $faction) {
+      $getfield .= "+OR+#" . str_replace(' ', '', $faction['factionName']);
+      foreach($faction['notablePersons'] as $notablePerson) {
+        $getfield .= "+OR+#" . str_replace(' ', '', $notablePerson['name']);
+      }
 }
 $getfield .= "+OR+English%20Civil%20War" .
             "+OR+#englishcivilwar";
