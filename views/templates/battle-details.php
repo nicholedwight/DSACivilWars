@@ -1,10 +1,14 @@
 <div class='wrapper'>
+<?php
+$unixtime = strtotime($battle['date']);
+$date = date("F j, Y", $unixtime);
+?>
 
 <a href="./map"><button class='btn btn-primary'>< Back To Homepage</button></a>
 <h1 class='page-header'><?php echo $battle['name']; ?></h1>
 <h3><?php echo $battle['location']; ?></h3>
 <p><?php echo $battle['outcome']; ?></p>
-<p><?php echo $battle['date']; ?></p>
+<p><?php echo $date; ?></p>
 <p><?php echo $battle['description'];?></p>
 
 <?php foreach($factions['factions'] as $faction):?>

@@ -41,6 +41,8 @@ class Resource extends Base
   public function renderRSSByBattleId($battleId)
   {
     $battle = $this->battles->getBattleById($battleId);
+    $unixtime = strtotime($battle['date']);
+    $date = date("F j, Y", $unixtime);
 
     $rssFeed = "<?xml version='1.0' encoding='UTF-8'?>";
     $rssFeed .= "<rss version='2.0'>";
