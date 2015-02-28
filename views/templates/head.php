@@ -21,38 +21,40 @@ define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
   <body>
-    <nav class='navbar'>
-      <div class="navbar-collapse">
-        <ul class='navbar-nav'>
-          <?php foreach($battles as $battle): ?>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <?php echo $battle['name']; ?>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a <?php echo 'href="battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
-                    <?php echo $battle['name']; ?> webpage
-                  </a>
-                </li>
-                <li>
-                  <a <?php echo 'href="./rss/battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
-                    <?php echo $battle['name']; ?> RSS feed
-                  </a>
-                </li><li>
-                  <a <?php echo 'href="./'. str_replace(' ', '_', $battle['name']) . '" alt="' . $battle['name'] . '"';?>>
-                    Battle data as JSON REST Service
-                  </a>
-                </li>
-                <li>
-                  <a <?php echo 'href="./battle'. $battle['id'] . '/people" alt="' . $battle['name'] . '"';?>>
-                    Factions and People data as JSON REST Service
-                  </a>
-                </li>
-              </ul>
-          </li>
-          <?php endforeach; ?>
-        </ul>
-      </div>
-    </nav>
+    <header class="default" role="banner">
+      <nav class='navbar'>
+        <div class="navbar-collapse">
+          <ul class='navbar-nav'>
+            <?php foreach($battles as $battle): ?>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <?php echo $battle['name']; ?>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a <?php echo 'href="battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
+                      <?php echo $battle['name']; ?> webpage
+                    </a>
+                  </li>
+                  <li>
+                    <a <?php echo 'href="./rss/battle'. $battle['id'] . '" alt="' . $battle['name'] . '"';?>>
+                      <?php echo $battle['name']; ?> RSS feed
+                    </a>
+                  </li><li>
+                    <a <?php echo 'href="./'. str_replace(' ', '_', $battle['name']) . '" alt="' . $battle['name'] . '"';?>>
+                      Battle data as JSON REST Service
+                    </a>
+                  </li>
+                  <li>
+                    <a <?php echo 'href="./battle'. $battle['id'] . '/people" alt="' . $battle['name'] . '"';?>>
+                      Factions and People data as JSON REST Service
+                    </a>
+                  </li>
+                </ul>
+            </li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+      </nav>
+    </header>
