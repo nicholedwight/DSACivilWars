@@ -93,6 +93,22 @@ class Battles
       // echo "<pre>";
       // var_dump($row);
       // echo "</pre>";
+      foreach ($factions as &$faction) {
+        if($row['factionName'] == $faction['factionName']) {
+          // die(var_dump($factions));
+          array_push($faction['notablePersons'],
+              array(
+                "name" => $row['notablePersonName'],
+                "imageURL" => $row['imageURL']
+                )
+              );
+        } else {
+          // echo "<pre>";
+          // var_dump($row);
+          // echo "</pre>";
+
+        }
+      }
       array_push($factions, array(
         "factionName" => $row['factionName'],
         "notablePersons" => array(
@@ -104,14 +120,13 @@ class Battles
         )
       );
     }
-    echo "<pre>";
-    var_dump($factions);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($factions);
+    // echo "</pre>";
 
 
-    $battleFactions = array('factions'=>$factions);
 
-    return $battleFactions;
+    return $factions;
   }
 
   // Insert Battle
