@@ -15,8 +15,10 @@ $date = date("F j, Y", $unixtime);
 <?php foreach($factions['factions'] as $faction):?>
   <h2><?php echo $faction['factionName'];?></h2>
   <h3><?php echo $faction['notablePerson'];?></h3>
+  <img src="<?php echo $faction['personOneImage'];?>" class="person-image">
   <?php if(isset($faction['notablePersonTwo'])): ?>
     <h3><?php echo $faction['notablePersonTwo'];?></h3>
+    <img src="<?php echo $faction['personTwoImage'];?>" class="person-image">
   <?php endif; ?>
 <?php endforeach; ?>
 

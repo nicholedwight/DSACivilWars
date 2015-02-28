@@ -171,6 +171,10 @@ h2 {
   display: inline;
 }
 
+.person-image {
+  max-width: 250px;
+}
+
 /* Twitter API Section Styles */
 .twitter-wrapper {
   display: flex;

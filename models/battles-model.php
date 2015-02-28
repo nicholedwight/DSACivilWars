@@ -74,7 +74,7 @@ class Battles
 
   public function getFactionsByBattleId($battleId)
   {
-    $stmt = $this->db->query("SELECT Factions.factionName, NotablePersons.notablePersonName FROM Battles
+    $stmt = $this->db->query("SELECT Factions.factionName, NotablePersons.notablePersonName, NotablePersons.imageURL FROM Battles
       INNER JOIN Battles_has_NotablePersons
       ON Battles.id = Battles_has_NotablePersons.Battles_id
       INNER JOIN NotablePersons
@@ -95,17 +95,21 @@ class Battles
         $factionTwo['factionName'] = $row['factionName'];
         if(empty($factionTwo['notablePerson'])) {
           $factionTwo['notablePerson'] = $row['notablePersonName'];
+          $factionTwo['personOneImage'] = $row['imageURL'];
         }
         else {
           $factionTwo['notablePersonTwo'] = $row['notablePersonName'];
+          $factionTwo['personTwoImage'] = $row['imageURL'];
         }
       }
       if(isset($factionOne['factionName']) && $row['factionName'] === $factionOne['factionName']) {
           $factionOne['notablePersonTwo'] = $row['notablePersonName'];
+          $factionOne['personTwoImage'] = $row['imageURL'];
       }
       if(empty($factionOne['factionName'])) {
         $factionOne['factionName'] = $row['factionName'];
         $factionOne['notablePerson'] = $row['notablePersonName'];
+        $factionOne['personOneImage'] = $row['imageURL'];
       }
     }
 
