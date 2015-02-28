@@ -89,6 +89,7 @@ class Battles
 
     $factionOne = array();
     $factionTwo = array();
+    $factionThree = array();
 
     while($row = $stmt->fetch()) {
       if(isset($factionOne['factionName']) && $row['factionName'] !== $factionOne['factionName']) {
