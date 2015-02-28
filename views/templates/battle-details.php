@@ -3,6 +3,7 @@
 <h3><?php echo $battle['location']; ?></h3>
 <p><?php echo $battle['outcome']; ?></p>
 <p><?php echo $battle['date']; ?></p>
+<p><?php echo $battle['description'];?></p>
 
 <?php foreach($factions['factions'] as $faction):?>
   <h2><?php echo $faction['factionName'];?></h2>
