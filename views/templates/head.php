@@ -54,7 +54,20 @@ define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
                 </ul>
             </li>
             <?php endforeach; ?>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Individual Components
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/individual/nichole.html">Ashley Nichole Dwight</a></li>
+                <li><a href="#">Zia Grosvenor</a></li>
+                <li><a href="#">Julian</a></li>
+                <li><a href="#">Dom Aarvold</a></li>
+              </ul>
+            </li>
           </ul>
+
         </div>
       </nav>
     </header>

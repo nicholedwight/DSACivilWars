@@ -9,6 +9,7 @@ $date = date("F j, Y", $unixtime);
 <h3><?php echo $battle['location']; ?></h3>
 <p><?php echo $battle['outcome']; ?></p>
 <p><?php echo $date; ?></p>
+<!-- nl2br() preserves line breaks in text echoed from DB-->
 <p><?php echo nl2br($battle['description']);?></p>
 
 <?php foreach($factions['factions'] as $faction):?>
