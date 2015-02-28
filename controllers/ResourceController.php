@@ -57,17 +57,13 @@ class Resource extends Base
     $rssFeed .= "<date>" . $date . "</date>";
     $rssFeed .= "<description>" . $battle['description'] . "</description>";
     $rssFeed .= "<outcome>" . $battle['outcome'] . "</outcome>";
-    foreach ($factions['factions'] as $faction) {
+    foreach ($factions as $faction) {
       $rssFeed .= "<faction>";
       $rssFeed .= "<name>" . $faction['factionName'] . "</name>";
-      $rssFeed .= "<notablePerson>";
-      $rssFeed .= "<name>" . $faction['notablePerson'] . "</name>";
-      $rssFeed .= "<image>" . $faction['personOneImage'] . "</image>";
-      $rssFeed .= "</notablePerson>";
-      if (isset($faction['notablePersonTwo'])) {
+      foreach($faction['notablePersons'] as $notablePerson) {
         $rssFeed .= "<notablePerson>";
-        $rssFeed .= "<name>" . $faction['notablePersonTwo'] . "</name>";
-        $rssFeed .= "<image>" . $faction['personTwoImage'] . "</image>";
+        $rssFeed .= "<name>" . $notablePerson['name'] . "</name>";
+        $rssFeed .= "<image>" . $notablePerson['imageURL'] . "</image>";
         $rssFeed .= "</notablePerson>";
       }
       $rssFeed .= "</faction>";
