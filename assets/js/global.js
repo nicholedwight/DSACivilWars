@@ -62,7 +62,10 @@ $(document).ready(function(){
     }
 
     // Builds map in a div with an ID of map-canvas.
-    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+    if(document.getElementById("map-canvas")) {
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+    }
 
     // Appends a container div to the map in which to display battle information using jQuery.
     // var battleInfoContainer = '<div id="battle-info"></div>';
