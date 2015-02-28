@@ -59,9 +59,15 @@ class Resource extends Base
     $rssFeed .= "<outcome>" . $battle['outcome'] . "</outcome>";
     foreach ($factions['factions'] as $faction) {
       $rssFeed .= "<faction>" . $faction['factionName'] . "</faction>";
-      $rssFeed .= "<notablePerson>" . $faction['notablePerson'] . "</notablePerson>";
+      $rssFeed .= "<notablePerson>";
+      $rssFeed .= "<name>" . $faction['notablePerson'] . "</name>";
+      $rssFeed .= "<image>" . $faction['personOneImage'] . "</image>";
+      $rssFeed .= "</notablePerson>";
       if (isset($faction['notablePersonTwo'])) {
-        $rssFeed .= "<notablePerson>" . $faction['notablePersonTwo'] . "</notablePerson>";
+        $rssFeed .= "<notablePerson>";
+        $rssFeed .= "<name>" . $faction['notablePersonTwo'] . "</name>";
+        $rssFeed .= "<image>" . $faction['personTwoImage'] . "</image>";
+        $rssFeed .= "</notablePerson>";
       }
     }
     $rssFeed .= "</battle>";
