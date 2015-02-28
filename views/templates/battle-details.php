@@ -3,7 +3,9 @@
 $unixtime = strtotime($battle['date']);
 $date = date("F j, Y", $unixtime);
 ?>
-
+<pre>
+  <?php die(var_dump($factions));?>
+</pre>
 <a href="./map"><button class='btn btn-primary'>< Back To Homepage</button></a>
 <h1 class='page-header'><?php echo $battle['name']; ?></h1>
 <h3><?php echo $battle['location']; ?></h3>

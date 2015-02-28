@@ -87,34 +87,22 @@ class Battles
     $stmt->bindParam(':id', $battleId);
     $stmt->execute();
 
-    $factionOne = array();
-    $factionTwo = array();
-    $factionThree = array();
+    $factions = array();
 
     while($row = $stmt->fetch()) {
-      if(isset($factionOne['factionName']) && $row['factionName'] !== $factionOne['factionName']) {
-        $factionTwo['factionName'] = $row['factionName'];
-        if(empty($factionTwo['notablePerson'])) {
-          $factionTwo['notablePerson'] = $row['notablePersonName'];
-          $factionTwo['personOneImage'] = $row['imageURL'];
-        }
-        else {
-          $factionTwo['notablePersonTwo'] = $row['notablePersonName'];
-          $factionTwo['personTwoImage'] = $row['imageURL'];
-        }
-      }
-      if(isset($factionOne['factionName']) && $row['factionName'] === $factionOne['factionName']) {
-          $factionOne['notablePersonTwo'] = $row['notablePersonName'];
-          $factionOne['personTwoImage'] = $row['imageURL'];
-      }
-      if(empty($factionOne['factionName'])) {
-        $factionOne['factionName'] = $row['factionName'];
-        $factionOne['notablePerson'] = $row['notablePersonName'];
-        $factionOne['personOneImage'] = $row['imageURL'];
-      }
-    }
+      // echo "<pre>";
+      // var_dump($row);
+      // echo "</pre>";
+        array_push($factions, array(
+                              "factionName" => $row['factionName'] 
+          ));
 
-    $factions = array($factionOne, $factionTwo);
+
+    }
+    echo "<pre>";
+    var_dump($factions);
+    echo "</pre>";
+
 
     $battleFactions = array('factions'=>$factions);
 
