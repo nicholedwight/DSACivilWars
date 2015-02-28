@@ -51,6 +51,7 @@ class Resource extends Base
     $rssFeed .= "<battle>";
     $rssFeed .= "<name>" . $battle['name'] . "</name>";
     $rssFeed .= "<location>" . $battle['location'] . "</location>";
+    $rssFeed .= "<description>" . $battle['description'] . "</description>";
     $rssFeed .= "</battle>";
     $rssFeed .= "</channel>";
     $rssFeed .= "</rss>";
