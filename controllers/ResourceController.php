@@ -41,6 +41,7 @@ class Resource extends Base
   public function renderRSSByBattleId($battleId)
   {
     $battle = $this->battles->getBattleById($battleId);
+    $factions = $this->battles->getFactionsByBattleId($battleId);
     $unixtime = strtotime($battle['date']);
     $date = date("F j, Y", $unixtime);
 
@@ -53,7 +54,16 @@ class Resource extends Base
     $rssFeed .= "<battle>";
     $rssFeed .= "<name>" . $battle['name'] . "</name>";
     $rssFeed .= "<location>" . $battle['location'] . "</location>";
+    $rssFeed .= "<date>" . $date . "</date>";
     $rssFeed .= "<description>" . $battle['description'] . "</description>";
+    $rssFeed .= "<outcome>" . $battle['outcome'] . "</outcome>";
+    foreach ($factions['factions'] as $faction) {
+      $rssFeed .= "<faction>" . $faction['factionName'] . "</faction>";
+      $rssFeed .= "<notablePerson>" . $faction['notablePerson'] . "</notablePerson>";
+      if (isset($faction['notablePersonTwo'])) {
+        $rssFeed .= "<notablePerson>" . $faction['notablePersonTwo'] . "</notablePerson>";
+      }
+    }
     $rssFeed .= "</battle>";
     $rssFeed .= "</channel>";
     $rssFeed .= "</rss>";
