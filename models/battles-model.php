@@ -93,11 +93,16 @@ class Battles
       // echo "<pre>";
       // var_dump($row);
       // echo "</pre>";
-        array_push($factions, array(
-                              "factionName" => $row['factionName'] 
-          ));
-
-
+      array_push($factions, array(
+        "factionName" => $row['factionName'],
+        "notablePersons" => array(
+          array(
+            "name" => $row['notablePersonName'],
+            "imageURL" => $row['imageURL']
+            )
+          )
+        )
+      );
     }
     echo "<pre>";
     var_dump($factions);
