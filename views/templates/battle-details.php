@@ -3,9 +3,7 @@
 $unixtime = strtotime($battle['date']);
 $date = date("F j, Y", $unixtime);
 ?>
-<pre>
-  <?php die(var_dump($factions));?>
-</pre>
+
 <a href="./map"><button class='btn btn-primary'>< Back To Homepage</button></a>
 <h1 class='page-header'><?php echo $battle['name']; ?></h1>
 <h3><?php echo $battle['location']; ?></h3>
@@ -14,14 +12,14 @@ $date = date("F j, Y", $unixtime);
 <!-- nl2br() preserves line breaks in text echoed from DB-->
 <p><?php echo nl2br($battle['description']);?></p>
 
-<?php foreach($factions['factions'] as $faction):?>
+
+<?php foreach($factions as $faction):?>
+
   <h2><?php echo $faction['factionName'];?></h2>
-  <h3><?php echo $faction['notablePerson'];?></h3>
-  <img src="<?php echo $faction['personOneImage'];?>" class="person-image">
-  <?php if(isset($faction['notablePersonTwo'])): ?>
-    <h3><?php echo $faction['notablePersonTwo'];?></h3>
-    <img src="<?php echo $faction['personTwoImage'];?>" class="person-image">
-  <?php endif; ?>
+  <?php foreach($faction['notablePersons'] as $notablePerson):?>
+    <h3><?php echo $notablePerson['name'];?></h3>
+    <img src="<?php echo $notablePerson['imageURL'];?>" class="person-image">
+  <?php endforeach; ?>
 <?php endforeach; ?>
 
 <section class="twitter-wrapper">

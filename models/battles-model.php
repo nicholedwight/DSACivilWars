@@ -119,8 +119,9 @@ class Battles
           )
         );
       }
-    return $factions;
-  }
+    }
+  return $factions;
+}
 
   // Insert Battle
   public function insertBattle($name, $date, $location, $lat, $lng, $outcome)
