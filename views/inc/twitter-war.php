@@ -13,25 +13,26 @@ $settings = array(
 ;
 /** Perform a GET request and echo the response **/
 //Setting variables for the getfield
-$battleName =  str_replace(' ', '', $battle['name']);//Removing whitespace from battle name for the getfield
-$notablePersonOne = str_replace(' ', '', $faction['notablePerson']);
-if(isset($faction['notablePersonTwo'])) {
-  $notablePersonTwo = str_replace(' ', '', $faction['notablePersonTwo']);
-}
-
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
-$getfield = "?q=#".
-            $battleName .
-            "+OR+#" .
-            $notablePersonOne .
-            "+OR+English%20Civil%20War" .
+$battleName =  str_replace(' ', '', $battle['name']);//Removing whitespace from battle name for the getfield
+$getfield = "?q=#". $battleName;
+//Looping through factions array to display both factions and all potential notable people in the getfield
+foreach ($factions['factions'] as $faction) {
+    if ($faction['factionName']) {
+      $getfield .= "+OR+#" . $faction['factionName'];
+    }
+      $getfield .= "+OR+#" . str_replace(' ', '', $faction['notablePerson']) .
+                   "+OR+" . str_replace(' ', '%20', $faction['notablePerson']);
+    if ($faction['notablePersonTwo']) {
+     $getfield .= "+OR+#" . str_replace(' ', '', $faction['notablePersonTwo']) .
+      "+OR+" . str_replace(' ', '%20', $faction['notablePersonTwo']);
+    }
+}
+$getfield .= "+OR+English%20Civil%20War" .
             "+OR+#englishcivilwar";
 
-if (isset($faction['notablePersonTwo'])) {
-  $getfield .= "+OR+" . $notablePersonTwo;
-}
 $getfield .= "&result_type=recent";
-
+echo $getfield;
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data=$twitter->setGetfield($getfield)
