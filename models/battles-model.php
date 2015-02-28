@@ -90,42 +90,35 @@ class Battles
     $factions = array();
 
     while($row = $stmt->fetch()) {
-      // echo "<pre>";
-      // var_dump($row);
-      // echo "</pre>";
-      foreach ($factions as &$faction) {
-        if($row['factionName'] == $faction['factionName']) {
-          // die(var_dump($factions));
-          array_push($faction['notablePersons'],
-              array(
-                "name" => $row['notablePersonName'],
-                "imageURL" => $row['imageURL']
-                )
-              );
-        } else {
-          // echo "<pre>";
-          // var_dump($row);
-          // echo "</pre>";
+      // Used to see if faction array has already been created
+      $doesFactionExist = false;
 
+      foreach ($factions as &$faction) {
+        // If faction array has already been created
+        // add notable persons to it
+        if($row['factionName'] == $faction['factionName']) {
+          array_push($faction['notablePersons'],
+            array(
+              "name" => $row['notablePersonName'],
+              "imageURL" => $row['imageURL']
+              )
+            );
+          $doesFactionExist = true;
         }
       }
-      array_push($factions, array(
-        "factionName" => $row['factionName'],
-        "notablePersons" => array(
-          array(
-            "name" => $row['notablePersonName'],
-            "imageURL" => $row['imageURL']
+      // If faction is new, create an array for it
+      if($doesFactionExist === false) {
+        array_push($factions, array(
+          "factionName" => $row['factionName'],
+          "notablePersons" => array(
+            array(
+              "name" => $row['notablePersonName'],
+              "imageURL" => $row['imageURL']
+              )
             )
           )
-        )
-      );
-    }
-    // echo "<pre>";
-    // var_dump($factions);
-    // echo "</pre>";
-
-
-
+        );
+      }
     return $factions;
   }
 
