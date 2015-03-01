@@ -1,11 +1,23 @@
 </div>
 <footer>
   <div class="footer-nav">
-    <?php foreach($battles as $battle): ?>
-      <a href="battle<?php echo $battle['id'];?>" >
-        <?php echo $battle['name']; ?>
-      </a>
-    <?php endforeach;?>
+    <ul class="footer-battles">
+      <li>
+        <strong>Developed with &#10084; and caffeine by:</strong>
+      <li>
+      <li>13000673</li>
+      <li>13000673</li>
+      <li>13000673</li>
+      <li>13000673</li>
+
+      <?php foreach($battles as $battle): ?>
+        <li>
+          <a href="battle<?php echo $battle['id'];?>" >
+            <?php echo $battle['name']; ?>
+          </a>
+        </li>
+      <?php endforeach;?>
+    </ul>
   </div>
 </footer>
 
