@@ -30,7 +30,7 @@ class Page extends Base
     $this->renderHeader($battles);
     include 'views/templates/map.php';
     include 'views/templates/modal.php';
-    $this->renderFooter();
+    $this->renderFooter($battles);
   }
 
   /**

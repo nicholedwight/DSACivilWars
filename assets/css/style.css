@@ -93,14 +93,17 @@ h2 {
 }
 
 .navbar a,
-.dropdown-menu > li > a {
+.dropdown-menu > li > a,
+footer a {
   color: #FFF;
 }
 
 .navbar a:hover,
 .navbar a:focus,
 .dropdown-menu > li > a:hover,
-.dropdown-menu > li >a:focus {
+.dropdown-menu > li >a:focus,
+footer a:hover,
+footer a:focus {
   text-decoration: none;
   color: #88d4c1;
   background-color: transparent;
