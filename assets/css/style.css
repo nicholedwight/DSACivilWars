@@ -163,9 +163,11 @@ footer a:focus {
   right: 30px;
   top: 30px;
 }
+
 .wrapper {
   width: 95%;
   margin: 20px auto;
+  min-height: 70%;
 }
 
 .modal-inner-wrap {

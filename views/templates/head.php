@@ -71,3 +71,4 @@ define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
         </div>
       </nav>
     </header>
+    <div class="wrapper">

@@ -1,4 +1,3 @@
-<div class='wrapper'>
 <?php
 $unixtime = strtotime($battle['date']);
 $date = date("F j, Y", $unixtime);
