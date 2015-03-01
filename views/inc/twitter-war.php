@@ -15,6 +15,7 @@ $settings = array(
 //Setting variables for the getfield
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
 $battleName =  str_replace(' ', '', $battle['name']);//Removing whitespace from battle name for the getfield
+
 $getfield = "?q=#". $battleName;
 
 //Looping through factions array to display both factions and all potential notable people in the getfield
@@ -25,10 +26,10 @@ foreach ($factions as $faction) {
       }
 }
 $getfield .= "+OR+English%20Civil%20War" .
-            "+OR+#englishcivilwar";
+            "+OR+#englishcivilwar" .
+            "&result_type=recent";
+// echo $getfield;
 
-$getfield .= "&result_type=recent";
-echo $getfield;
 $requestMethod = 'GET';
 $twitter = new TwitterAPIExchange($settings);
 $data=$twitter->setGetfield($getfield)

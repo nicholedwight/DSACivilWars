@@ -48,7 +48,7 @@
   font-style: normal;
 }
 
-* {
+html {
   box-sizing: border-box; }
 
 *, *:before, *:after {
@@ -159,7 +159,7 @@ h2 {
   top: 30px;
 }
 .wrapper {
-  width: 80%;
+  width: 95%;
   margin: 20px auto;
 }
 
@@ -175,6 +175,25 @@ h2 {
   max-width: 250px;
 }
 
+.details-heading {
+  margin: 40px 0 20px;
+}
+
+.faction {
+  margin-top: 10px;
+}
+
+.persons-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.centered-text {
+  text-align: center;
+}
+
 /* Twitter API Section Styles */
 .twitter-wrapper {
   display: flex;
@@ -183,14 +202,22 @@ h2 {
   justify-content: space-around;
   align-items: flext-start;
   width: 100%;
+  font-size: 14px;
 }
 
-.comment_section_wrapper, .hashtag_section_wrapper {
+.comment_section_wrapper,
+.hashtag_section_wrapper {
   width: 40%;
   height: 700px;
   padding: 20px;
-  border: 2px solid black;
   overflow-y: scroll;
+}
+
+.comment_section_wrapper a:hover,
+.hashtag_section_wrapper a:hover,
+.comment_section_wrapper a:focus,
+.hashtag_section_wrapper a:focus {
+  color: #1abc9c;
 }
 
 .comment_list {

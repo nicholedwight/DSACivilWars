@@ -50,7 +50,11 @@ if ($_SESSION) {
           <div class="comment_content_wrapper">
              <div class="comment_user_info">
                <p>
-                 <strong><?php echo $comment['username'];?></strong>
+                 <strong>
+                   <a href="http://www.twitter.com/<?=$comment['username']?>">
+                   <?php echo "@" . $comment['username'];?>
+                   </a>
+                  </strong>
                  <span class="comment_date"><?php echo $date;?></span>
                </p>
              </div>
@@ -71,7 +75,7 @@ if ($_SESSION) {
     <?php
     //If a user is signed in already, they can comment, otherwise a button linking to the twitter authorisation is displayed
     if (!$_SESSION) {
-      echo "<a href='redirect.php'>
+      echo "<a href='redirect.php' class='btn'>
               <img src='../assets/img/sign-in-with-twitter-link.png'
                 alt='Sign in with Twitter to comment'>
             </a>";
