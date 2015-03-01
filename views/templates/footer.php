@@ -1,6 +1,12 @@
 </div>
 <footer>
-  <p> testest</p>
+  <div class="footer-nav">
+    <?php foreach($battles as $battle): ?>
+      <a href="battle<?php echo $battle['id'];?>" >
+        <?php echo $battle['name']; ?>
+      </a>
+    <?php endforeach;?>
+  </div>
 </footer>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

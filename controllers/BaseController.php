@@ -14,7 +14,7 @@ class Base
   /**
    * Render header method
    */
-  public function renderFooter()
+  public function renderFooter($battles)
   {
     include 'views/templates/footer.php';
   }

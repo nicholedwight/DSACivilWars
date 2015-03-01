@@ -199,10 +199,15 @@ h2 {
 footer {
   background-color: #2e3133;
   width: 100%;
-  height: 55px;
+  height: 150px;
   color: #FFF;
   font-weight: lighter;
   font-size: 14px;
+}
+
+.footer-nav {
+  width: 70%;
+  margin: 10px auto;
 }
 
 /* Twitter API Section Styles */

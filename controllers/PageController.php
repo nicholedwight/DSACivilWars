@@ -43,6 +43,6 @@ class Page extends Base
     $battles = $this->battles->getBattles();
     $this->renderHeader($battles);
     include 'views/templates/battle-details.php';
-    $this->renderFooter();
+    $this->renderFooter($battles);
   }
 }
