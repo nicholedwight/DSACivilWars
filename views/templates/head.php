@@ -16,6 +16,7 @@ define('OAUTH_CALLBACK', 'http://civilwar.dev:8888/callback.php');
   <head>
     <title>Civil War Map</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="./assets/css/style.css">
