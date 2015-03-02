@@ -29,7 +29,7 @@ $date = date("F j, Y", $unixtime);
     <?php endforeach; ?>
   </div>
 </div>
-
+<h2 class='page-header centered-text'>What others are saying</h2>
 <section class="twitter-wrapper">
   <!--Nichole's individual part, including the two files containing twitter sections-->
   <?php include('./views/inc/comment_form.php'); ?>

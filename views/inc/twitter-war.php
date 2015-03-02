@@ -2,6 +2,8 @@
 //Based on code by James Mallison, see https://github.com/J7mbo/twitter-api-php
 ini_set('display_errors', 1);
 require_once('./vendor/TwitterAPIExchange.php');
+$Db = Database::getInstance();
+$comments = new Comments($Db);
 
 /** Set access tokens here - see: https://dev.twitter.com/apps/ **/
 $settings = array(
@@ -36,21 +38,32 @@ $data=$twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 
-// Read the $data JSON into a PHP object
 $phpdata = json_decode($data, true);
+// echo "<pre>" ;
+// var_dump($phpdata);
+if (!empty($phpdata)) {
+   foreach ($phpdata["statuses"] as $tweet) {
+       $tweetText = $comments->addTweetEntityLinks($tweet);
+       // use $tweetText however you want to
+       echo $tweetText;
+   }
+}
+// Read the $data JSON into a PHP object
+
 
 //Set some HTML for presentation of tweets
 ?> <div class="hashtag_section_wrapper cf"> <?php
 
 //Loop through the status updates and print out the text of each
-foreach ($phpdata["statuses"] as $status){
+foreach ($phpdata as $status){
   $screen_name = $status["user"]["screen_name"];
   $name = $status["user"]["name"];
-  $tweet = $status["text"];
+  $tweet = $tweetText;
   $time = date("H:i", strtotime($status["created_at"]));
   $profileimage = $status["user"]["profile_image_url"];
   ?>
     <div class="tweet_box">
+      <h3 class="tweet-header">Tweets</h3>
     <div class="inner">
       <p>
         <a href="http://www.twitter.com/<?php echo $screen_name; ?>" target="_blank">
