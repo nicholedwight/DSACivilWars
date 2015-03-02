@@ -38,32 +38,30 @@ $data=$twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 
-$phpdata = json_decode($data, true);
-// echo "<pre>" ;
-// var_dump($phpdata);
-if (!empty($phpdata)) {
-   foreach ($phpdata["statuses"] as $tweet) {
-       $tweetText = $comments->addTweetEntityLinks($tweet);
-       // use $tweetText however you want to
-       echo $tweetText;
-   }
-}
 // Read the $data JSON into a PHP object
+$phpdata = json_decode($data, true);
 
 
 //Set some HTML for presentation of tweets
-?> <div class="hashtag_section_wrapper cf"> <?php
+?>
+<div class="hashtag_section_wrapper cf">
+  <h3 class="tweet-header">Tweets</h3>
+<?php
+
 
 //Loop through the status updates and print out the text of each
-foreach ($phpdata as $status){
+foreach ($phpdata["statuses"] as $status){
+
   $screen_name = $status["user"]["screen_name"];
   $name = $status["user"]["name"];
-  $tweet = $tweetText;
   $time = date("H:i", strtotime($status["created_at"]));
   $profileimage = $status["user"]["profile_image_url"];
+  // Reformatting the text within the tweets to make links and hashtags clickable
+  $tweetText = $comments->addTweetEntityLinks($status);
+  $tweet = $tweetText;
+
   ?>
     <div class="tweet_box">
-      <h3 class="tweet-header">Tweets</h3>
     <div class="inner">
       <p>
         <a href="http://www.twitter.com/<?php echo $screen_name; ?>" target="_blank">
