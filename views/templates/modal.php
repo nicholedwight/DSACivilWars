@@ -8,9 +8,7 @@
       </div><!-- /.modal-header -->
       <div class="modal-inner-wrap">
         <h3 class="battle-outcome"></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur tenetur
-         doloremque, similique in quos! Alias nulla, accusantium, ipsam laboriosam, libero sed ipsa consequuntur aperiam 
-         reiciendis quae placeat non doloremque illo?</p>
+        <p class="battle-description"></p>
       </div>
       <div class="modal-footer">
         <div id="battle-link-wrapper"></div>

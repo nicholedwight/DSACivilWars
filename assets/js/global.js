@@ -77,6 +77,7 @@ $(document).ready(function(){
     function addInfoWindow (num, battle, marker, map) {
       var battleName = battle.name;
       var battleDate = battle.date;
+      var battleDescription = battle.description;
       var battleOutcome = battle.outcome;
       var battleContent = "<h2>" + battleName + "</h2>";
       var linkToBattlePage = "<a href='/?page=battle&id=" + battle.id +"' alt='Link to battle page'>";
@@ -107,6 +108,7 @@ $(document).ready(function(){
         $('.modal-title').html(battleName);
         $('.battle-date').html(battleDate);
         $('.battle-outcome').html(battleOutcome);
+        $('.battle-description').html(battleDescription);
         $('#battle-link-wrapper').html(linkToBattlePage);
         $('#battle-modal').modal('toggle');
       });
