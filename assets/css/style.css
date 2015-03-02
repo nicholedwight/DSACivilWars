@@ -245,10 +245,14 @@ footer {
   overflow-y: scroll;
 }
 
+.inner > p > a {
+  color: #63c6ae
+}
+
 .comment_section_wrapper a:hover,
-.hashtag_section_wrapper a:hover,
+.inner > p > a:hover,
 .comment_section_wrapper a:focus,
-.hashtag_section_wrapper a:focus {
+.inner > p > a:focus {
   color: #88d4c1;
 }
 
