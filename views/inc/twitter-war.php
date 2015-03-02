@@ -59,17 +59,17 @@ foreach ($phpdata["statuses"] as $status){
   $tweetText = $comments->addTweetEntityLinks($status);
   $tweet = $tweetText;
   ?>
-    <div class="tweet_box">
-    <div class="inner">
-      <p>
-        <a href="http://www.twitter.com/<?php echo $screen_name; ?>" target="_blank">
-          <img src="<?php echo $profileimage; ?>" alt="<?php echo $name; ?>'s Profile Image">
-          <?php echo $name; ?>
-        </a>
-        <span class="sub">@<?php echo $screen_name . " at " . $time; ?></span>
-      </p>
-      <p class="tweet"> <?php echo $tweet;?> </p>
-    </div>
+    <div class="tweet_content_wrapper">
+    <img src="<?php echo $profileimage; ?>" alt="<?php echo $name; ?>'s Profile Image" class="twitter_user_image">
+      <div class="comment_user_info">
+        <p>
+          <a href="http://www.twitter.com/<?php echo $screen_name; ?>" target="_blank">
+              <strong><?php echo $name; ?></strong>
+          </a>
+          <span class="comment_date">@<?php echo $screen_name . " at " . $time; ?></span>
+        </p>
+      </div>
+      <div class="tweet_content"> <?php echo $tweet;?> </div>
     </div>
 <?php } ?>
 </div>

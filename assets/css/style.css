@@ -245,8 +245,19 @@ footer {
   overflow-y: scroll;
 }
 
-.inner > p > a {
+.tweet_content_wrapper a,
+.comment_user_info a {
   color: #63c6ae
+}
+
+.twitter_user_image {
+  float: left;
+  margin-right: 8px;
+}
+
+.tweet_content {
+  margin-left: 56px;
+  word-wrap: break-word;
 }
 
 .comment_section_wrapper a:hover,
@@ -288,6 +299,11 @@ footer {
 .comment_date {
   color: #999;
   font-size: 12px;
+}
+
+.comment_content {
+  max-width: 97%;
+  word-wrap: break-word;
 }
 
 .form_wrapper {
