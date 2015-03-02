@@ -12,7 +12,7 @@ $settings = array(
   'consumer_key' => "cUoJtlCdfGW4rMDpnORVz6Mfu",
   'consumer_secret' => "RbNDMvbH16pRRyL2a1Q1kia5ZqegwajY3p0fsbGUYH4CoVzZnu"
 );
-;
+
 /** Perform a GET request and echo the response **/
 //Setting variables for the getfield
 $url = 'https://api.twitter.com/1.1/search/tweets.json';
@@ -41,7 +41,6 @@ $data=$twitter->setGetfield($getfield)
 // Read the $data JSON into a PHP object
 $phpdata = json_decode($data, true);
 
-
 //Set some HTML for presentation of tweets
 ?>
 <div class="hashtag_section_wrapper cf">
@@ -59,7 +58,6 @@ foreach ($phpdata["statuses"] as $status){
   // Reformatting the text within the tweets to make links and hashtags clickable
   $tweetText = $comments->addTweetEntityLinks($status);
   $tweet = $tweetText;
-
   ?>
     <div class="tweet_box">
     <div class="inner">
