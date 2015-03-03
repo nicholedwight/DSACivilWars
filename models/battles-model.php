@@ -140,5 +140,163 @@ class Battles
     ));
   }
 
+  public function getAllDatabaseDetails() {
+    $stmt = $this->db->query("SELECT * FROM Battles
+        INNER JOIN Battles_has_NotablePersons
+        ON Battles.id = Battles_has_NotablePersons.Battles_id
+        INNER JOIN NotablePersons
+        ON Battles_has_NotablePersons.NotablePersons_id = NotablePersons.id
+        INNER JOIN Factions
+        ON NotablePersons.Factions_id = Factions.id");
+
+    $stmt->execute();
+
+    $allData = array();
+
+    while($row = $stmt->fetch()) {
+      echo "<pre>";
+      var_dump($row);
+
+      foreach($allData as $data) {
+
+      }
+      array_push($allData, array(
+        "battleName" => $row['name'],
+        "location" => $row['location'],
+        "outcome" => $row['outcome'],
+        "battleDescription" => $row['description'],
+        "factions" => array(
+            "factionName" => $row['factionName'],
+            "notablePersons" => array(
+              array(
+                "name" => $row['notablePersonName'],
+                "imageURL" => $row['imageURL']
+                )
+              )
+            )
+          )
+        );
+    }
+    return $allData;
+  }
+
+  public function getAllData() {
+    $stmt = $this->db->query("SELECT * FROM Battles
+        INNER JOIN Battles_has_NotablePersons
+        ON Battles.id = Battles_has_NotablePersons.Battles_id
+        INNER JOIN NotablePersons
+        ON Battles_has_NotablePersons.NotablePersons_id = NotablePersons.id
+        INNER JOIN Factions
+        ON NotablePersons.Factions_id = Factions.id");
+
+    $stmt->execute();
+
+    $allData = array();
+
+    while($row = $stmt->fetch()) {
+      $doesBattleExist = false;
+      $doesFactionExist = false;
+
+      foreach ($allData as &$data) {
+        // echo "<pre>";
+        // var_dump($data);
+        // echo "</pre>";
+          if($row['name'] == $data['battleName']) {
+            array_push(
+              $data['factions'], array(
+                "factionName" => $row['factionName'],
+                "notablePersons" => array(
+                  array(
+                    "name" => $row['notablePersonName'],
+                    "imageURL" => $row['imageURL']
+                  )
+                )
+              )
+            );
+          $doesBattleExist = true;
+        }
+      }
+
+    //   foreach ($allData as &$data) {
+    //     // If faction array has already been created
+    //     // add notable persons to it
+    //       if($row['factionName'] == $data['factionName']) {
+    //       array_push($data['factions'], array (
+    //       "notablePersons" =>
+    //         array(
+    //           "name" => $row['notablePersonName'],
+    //           "imageURL" => $row['imageURL']
+    //           )
+    //
+    //         )
+    //         );
+    //       // $doesBattleExist = true;
+    //       $doesFactionExist = true;
+    //     }
+    //
+    // }
+
+      if($doesBattleExist === false) {
+        array_push($allData, array(
+          "battleName" => $row['name'],
+          "location" => $row['location'],
+          "outcome" => $row['outcome'],
+          "battleDescription" => $row['description'],
+          "factions" => array(
+              "factionName" => $row['factionName'],
+              "notablePersons" => array(
+                array(
+                  "name" => $row['notablePersonName'],
+                  "imageURL" => $row['imageURL']
+                  )
+                )
+              )
+            )
+          );
+        }
+    }
+    return $allData;
+  }
 
 }
+
+
+
+// while($row = $stmt->fetch()) {
+//   $doesBattleExist = false;
+//
+//   foreach ($allData as &$data) {
+//     if($row['name'] == $data['battleName']) {
+//       array_push($data['factions'],
+//         array(
+//           "factionName" => $row['factionName'],
+//           "notablePersons" => array(
+//             array(
+//               "name" => $row['notablePersonName'],
+//               "imageURL" => $row['imageURL']
+//               )
+//             )
+//           )
+//         );
+//       $doesBattleExist = true;
+//     }
+//
+//     if($doesBattleExist === false) {
+//       array_push($allData, array(
+//         "battleName" => $row['name'],
+//         "factions" => array(
+//           array(
+//             "factionName" => $row['factionName'],
+//             "notablePersons" => array(
+//               array(
+//                 "name" => $row['notablePersonName'],
+//                 "imageURL" => $row['imageURL']
+//                 )
+//               )
+//             )
+//           )
+//         )
+//       );
+//     }
+//   }
+// }
