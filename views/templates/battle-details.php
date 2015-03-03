@@ -36,4 +36,4 @@ $date = date("F j, Y", $unixtime);
   <?php include('./views/inc/twitter-war.php'); ?>
 </section>
 
-<?php include('./views/inc/test.php'); ?>
+<!--<?php include('./views/inc/test.php'); ?>-->

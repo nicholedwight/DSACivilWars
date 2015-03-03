@@ -29,7 +29,7 @@ foreach ($factions as $faction) {
 }
 $getfield .= "+OR+English%20Civil%20War" .
             "+OR+#englishcivilwar" .
-            "&result_type=recent";
+            "&count=10&result_type=recent";
 // echo $getfield;
 
 $requestMethod = 'GET';
@@ -38,16 +38,47 @@ $data=$twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 
-// Read the $data JSON into a PHP object
-$phpdata = json_decode($data, true);
+$cacheData =  './tmp/tweet-cache/' . 'twitter-cache-' . $battle['id'] . '.txt';
+if (file_exists($cacheData)) {
+  $modified =filemtime($cacheData);
+} else {
+  $modified = false;
+}
+$now = time();
+$interval = 600; // ten minutes
 
+if ( !$modified || ( ( $now - $modified ) > $interval ) ) {
+  //Check twitter response for errors.
+  if ( isset( $data->errors[0]->code )) {
+     // If errors exist, print the first error for a simple notification.
+     echo "Error encountered: ".$data->errors[0]->message." Response code:" .$data->errors[0]->code;
+  } else {
+     // No errors exist. Write tweets to json/txt file.
+     $file = "./tmp/tweet-cache/twitter-cache-" . $battle['id'] . ".txt";
+     $fh = fopen($file, 'w') or die("can't open file");
+     fwrite($fh, $data);
+     fclose($fh);
+     // 
+    //  if (file_exists($file)) {
+    //     echo $file . " successfully written (" .round(filesize($file)/1024)."KB)";
+    //  } else {
+    //      echo "Error encountered. File could not be written.";
+    //  }
+  }
+}
+
+$cacheData = file_get_contents('./tmp/tweet-cache/twitter-cache-' . $battle['id'] . '.txt');
+$cacheData = trim($cacheData);
+// Read the $data JSON into a PHP object
+$phpdata = json_decode($cacheData, true);
+
+// echo "<pre>";
+// var_dump($phpdata);
 //Set some HTML for presentation of tweets
 ?>
 <div class="hashtag_section_wrapper cf">
   <h3 class="tweet-header">Tweets</h3>
 <?php
-
-
 //Loop through the status updates and print out the text of each
 foreach ($phpdata["statuses"] as $status){
 
