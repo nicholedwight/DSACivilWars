@@ -13,6 +13,8 @@ $Db = Database::getInstance();
 $battles = new Battles($Db);
 $comments = new Comments($Db);
 
+define("FILELOCATION", dirname(__FILE__));
+
 $models = array('battles' => $battles, 'comments' => $comments);
 
 $PageController = new Controller\Page($models);

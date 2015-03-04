@@ -38,12 +38,15 @@ $data=$twitter->setGetfield($getfield)
              ->buildOauth($url, $requestMethod)
              ->performRequest();
 
-$cacheData =  './tmp/tweet-cache/' . 'twitter-cache-' . $battle['id'] . '.txt';
+$cacheData = FILELOCATION . '/tmp/tweet-cache/' . 'twitter-cache-' . $battle['id'] . '.txt';
 if (file_exists($cacheData)) {
   $modified =filemtime($cacheData);
+  echo "yes";
 } else {
   $modified = false;
+  echo "no file here";
 }
+
 $now = time();
 $interval = 600; // ten minutes
 
@@ -54,11 +57,11 @@ if ( !$modified || ( ( $now - $modified ) > $interval ) ) {
      echo "Error encountered: ".$data->errors[0]->message." Response code:" .$data->errors[0]->code;
   } else {
      // No errors exist. Write tweets to json/txt file.
-     $file = "./tmp/tweet-cache/twitter-cache-" . $battle['id'] . ".txt";
+     $file = FILELOCATION . "/tmp/tweet-cache/twitter-cache-" . $battle['id'] . ".txt";
      $fh = fopen($file, 'w') or die("can't open file");
      fwrite($fh, $data);
      fclose($fh);
-     // 
+     //
     //  if (file_exists($file)) {
     //     echo $file . " successfully written (" .round(filesize($file)/1024)."KB)";
     //  } else {
@@ -67,7 +70,7 @@ if ( !$modified || ( ( $now - $modified ) > $interval ) ) {
   }
 }
 
-$cacheData = file_get_contents('./tmp/tweet-cache/twitter-cache-' . $battle['id'] . '.txt');
+$cacheData = file_get_contents( FILELOCATION . '/tmp/tweet-cache/twitter-cache-' . $battle['id'] . '.txt');
 $cacheData = trim($cacheData);
 // Read the $data JSON into a PHP object
 $phpdata = json_decode($cacheData, true);
@@ -78,6 +81,9 @@ $phpdata = json_decode($cacheData, true);
 ?>
 <div class="hashtag_section_wrapper cf">
   <h3 class="tweet-header">Tweets</h3>
+  <p class="last-updated">
+    Last updated at
+  </p>
 <?php
 //Loop through the status updates and print out the text of each
 foreach ($phpdata["statuses"] as $status){
