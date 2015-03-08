@@ -1,33 +1,59 @@
 <?php
 
+/**
+ * Comments model which contains methods for returning comment and user data
+ *
+ * File contains methods for querying database and returning
+ * data to then be output to the page.
+ */
+
 class Comments {
-  // Battle properties
+  // Comment properties
   public $db;
   public $comments;
 
-  // Assign parameter to argument to $db property
+  /**
+   * Magic method for assigning the database argument as a property to the battles class
+   * @param object $db Database object
+   */
   public function __construct($db)
   {
     $this->db = $db;
   }
 
   /**
-   * Queries for all data in battles table
-   * @return [array]
+   * Function for inserting Comments into the database
+   * @param  string $comment Comment of the battle
+   * @param  date $userid Userid of the user's Twitter account
+   * @param  string $username Username of the user's Twitter account
+   * @param  float $profile_image_url Profile Image of the user's Twitter account
+   * @param  float $battle_id Battle id of the battle
+   * @param  string $date Date of the comment
    */
-
     public function insertComment($comment, $userid, $username, $profile_image_url, $battle_id, $date) {
-
 
     $stmt = $this->db->query("INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)");
     $stmt->execute();
   }
 
+  /**
+   * Function for inserting New Users into the database
+   * @param  date $userid Userid of the user's Twitter account
+   * @param  string $username Username of the user's Twitter account
+   * @param  float $profile_image_url Profile Image of the user's Twitter account
+   */
     public function registerNewUser($userid, $username, $profile_image_url) {
       $stmt = $this->db->query("INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')");
       $stmt->execute();
   }
 
+  /**
+   * Function for getting all userinfo from the database based on User ID
+   * by querying where the id is equal to the parameter and
+   * then adding to array and returning it.
+   * @param  integer $userid User ID of battle to query
+   * @return array $row Returns the row containing all data for user
+   */
   public function getUserInfoByID($userid) {
     $stmt = $this->db->query("SELECT * FROM users WHERE userid = $userid");
     $stmt->execute();
@@ -38,12 +64,21 @@ class Comments {
     }
   }
 
+  /**
+   * Function for getting all comments for a specific battle
+   * from the database based on Battle ID
+   * by querying where the id is equal to the parameter and
+   * then adding to array and returning it.
+   * @param  integer $battle_id ID of battle to query
+   * @return array $commentRows Returns array containing all
+   * comments for chosen battle
+   */
   public function getAllCommentsByBattleID($battle_id) {
     $stmt = $this->db->query("SELECT *
               FROM comments
               INNER JOIN users
               ON comments.userid = users.userid
-              WHERE battle_id = $battle_id");
+              WHERE battle_id = :id");
 
     $stmt->bindParam(':id', $battle_id);
     $stmt->execute();
@@ -55,6 +90,12 @@ class Comments {
 
   }
 
+  /**
+   * Function for setting a redirect URL within
+   * a cookie. This is set on the battle-details page.
+   * Its used when redirecting the user back to app
+   * from Twitter Authentication.
+   */
   public function setRedirectCookie() {
       $cookie_name = "redirectURL";
       //sets a cookie to the value of current URL
@@ -78,9 +119,10 @@ class Comments {
  * @return     string tweet
  * http://www.webtipblog.com/add-links-to-twitter-mentions-hashtags-and-urls-with-php-and-the-twitter-1-1-oauth-api/
  *
- * This function was modified to fit my needs, the node structure was slightly different than what
- * was written in the example code. I also converted it all to work with a PHP array rather than
- * JSON
+ * This function was modified to fit my needs,
+ * the node structure was slightly different than what
+ * was written in the example code. I also converted it
+ * all to work with a PHP array rather than JSON
  */
   public function addTweetEntityLinks($tweet) {
     // actual tweet as a string

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Database file for dealing with connections to database
+ *
+ * Contains connection information for database and functions
+ * for connecting to the database by using PDO a lightweight,
+ * consistent interface for accessing databases in PHP.
+ */
+
 class Database
 {
   /*
@@ -25,7 +33,8 @@ class Database
   }
 
   /**
-   * Connect to DB when class is instantiated
+   * Magic construct method for connecting to the database
+   * upon instantiation.
    */
   private function __construct()
   {
@@ -33,7 +42,7 @@ class Database
   }
 
   /**
-   * Connects to the database
+   * Function which deals with connecting to the database through PDO.
    */
   private function connect()
   {

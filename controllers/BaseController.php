@@ -1,18 +1,30 @@
 <?php
 
+/**
+ * Renders header and footer and deals with 404s.
+ *
+ * This controller contains functions for rendering
+ * header and footers which are located in the views/templates
+ * folder. Also contains a function for displaying the 404
+ * page for when a page cannot be found.
+ */
+
 namespace Controller;
 
 class Base
 {
   /**
-   * Render header method
+   * Function for including the header which is located
+   * in the views/templates folder.
+   * @param string $battles Battles data rendered in header.
    */
   public function renderHeader($battles)
   {
     include 'views/templates/head.php';
   }
   /**
-   * Render header method
+   * Function for including the footer which is located
+   * in the views/templates folder.
    */
   public function renderFooter($battles)
   {
@@ -20,8 +32,8 @@ class Base
   }
 
   /**
-   * Controller for 404 view
-   * This view show when no page/view can be found
+   * Function for including the 404 page which is located
+   * in the views/templates folder.
   */
   public function pageNotFound()
   {

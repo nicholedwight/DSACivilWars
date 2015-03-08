@@ -1,20 +1,30 @@
 <?php
 
+/**
+ * Battles model which contains methods for returning battle data
+ *
+ * File contains methods for querying database and returning
+ * data to then be output to the page.
+ */
+
 class Battles
 {
   // Battle properties
   public $db;
   public $battles;
 
-  // Assign parameter to argument to $db property
+  /**
+   * Magic method for assigning the database argument as a property to the battles class
+   * @param object $db Database object
+   */
   public function __construct($db)
   {
     $this->db = $db;
   }
 
   /**
-   * Queries for all data in battles table
-   * @return [array]
+   * Function that queries for all data in battles table
+   * @return array $battles Array of all the battles in the battles table
    */
   public function getBattles()
   {
@@ -38,6 +48,13 @@ class Battles
     return $battles;
   }
 
+  /**
+   * Function for getting a battle from the database
+   * by querying where name is equal to the parameter and
+   * then adding to array and returning it.
+   * @param  string $name Name of battle to retrieve from database
+   * @return array $battle Returns array containing data for chosen battle
+   */
   public function getBattleByName($name)
   {
     $stmt = $this->db->query("SELECT * from Battles WHERE Battles.name = :name");
@@ -55,6 +72,13 @@ class Battles
 
   }
 
+  /**
+   * Function for getting a battle from the database
+   * by querying where the id is equal to the parameter and
+   * then adding to array and returning it.
+   * @param  integer $battleId ID of battle to query
+   * @return array $battleFactions Returns array containing data for chosen battle
+   */
   public function getBattleById($battleId)
   {
     $stmt = $this->db->query("SELECT * from Battles WHERE Battles.id = :id");
@@ -72,6 +96,11 @@ class Battles
 
   }
 
+  /**
+     * Function for getting factions of a specific Battle ID
+     * @param integer $battleId ID of the battle to query
+     * @return array $battle Returns array containing faction data from the battle
+     */
   public function getFactionsByBattleId($battleId)
   {
     $stmt = $this->db->query("SELECT Factions.factionName, NotablePersons.notablePersonName, NotablePersons.imageURL FROM Battles
@@ -123,7 +152,15 @@ class Battles
   return $factions;
 }
 
-  // Insert Battle
+  /**
+   * Function for inserting Battles into the database
+   * @param  string $name Name of the battle
+   * @param  date $date Date of the battle
+   * @param  string $location Town or city name of the battle location
+   * @param  float $lat Latitude of the location of the battle
+   * @param  float $lng Longtitude of the location of the battle
+   * @param  string $outcome Outcome of the battle
+   */
   public function insertBattle($name, $date, $location, $lat, $lng, $outcome)
   {
     // Query
